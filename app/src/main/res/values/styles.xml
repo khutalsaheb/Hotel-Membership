@@ -92,11 +92,11 @@
     <style name="cards" parent="Widget.MaterialComponents.CardView">
 
         <item name="android:layout_width">match_parent</item>
-         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/_10sdp</item>
         <item name="android:layout_weight">0.5</item>
         <item name="android:clickable">true</item>
-         <item name="android:focusable">true</item>
+        <item name="android:focusable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
         <item name="android:padding">@dimen/_10sdp</item>
         <item name="cardBackgroundColor">@color/colorPrimary</item>

@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@color/colorAccent"
+        android:background="@drawable/background"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -75,6 +75,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:errorEnabled="true"
+                            app:counterMaxLength="50"
                             app:boxBackgroundMode="outline"
                             app:counterEnabled="true"
                             android:hint="@string/password">
@@ -112,6 +113,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="start"
+                                android:padding="@dimen/_15sdp"
                                 style="@style/Titletext"
                                 android:layout_weight="0.5"
                                 android:text="@string/new_user"
@@ -122,6 +124,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="end"
+                                android:padding="@dimen/_15sdp"
                                 android:layout_weight="0.5"
                                 style="@style/Titletext"
                                 android:onClick="forgotpassword"

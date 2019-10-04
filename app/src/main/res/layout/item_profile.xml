@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ivitesse.epicure.helper.CircularImageView
+        android:layout_width="@dimen/_50"
+        android:layout_height="@dimen/_50"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="@+id/avatar"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:srcCompat="@drawable/camera" />
+
+    <com.ivitesse.epicure.helper.CircularImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/_100"
+        android:layout_height="@dimen/_100"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/hotel_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
+</androidx.constraintlayout.widget.ConstraintLayout>
