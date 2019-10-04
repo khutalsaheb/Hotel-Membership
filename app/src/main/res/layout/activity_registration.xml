@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Registration_Activity">
+
+<include layout="@layout/toolbar_hide"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text"
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            app:counterMaxLength="50"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_name">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/mobile_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:fontFamily="@font/montserrat_bold"
+                                android:inputType="text"
+                                android:textSize="@dimen/_10ssp" />
+
+                            <requestFocus />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="10"
+                            android:hint="@string/enter_mobile_number">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:fontFamily="@font/montserrat_bold"
+                                android:inputType="number"
+                                android:maxLength="10"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="50"
+                            android:hint="@string/enter_email_id">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:fontFamily="@font/montserrat_bold"
+                                android:inputType="textEmailAddress"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="10"
+                            android:hint="@string/enter_dob">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:fontFamily="@font/montserrat_bold"
+                                android:inputType="date"
+                                android:focusable="false"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="10"
+                            android:hint="@string/enter_anniversary_date">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:fontFamily="@font/montserrat_bold"
+                                android:inputType="date"
+                                android:focusable="false"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="25"
+                            android:hint="@string/password">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:ems="10"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:inputType="textPassword"
+                                android:maxLength="25"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterMaxLength="25"
+                            android:hint="@string/confirm_password">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/c_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                              android:ems="10"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:inputType="textPassword"
+                                android:maxLength="25"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Buttonsmall"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="@string/add_photo"
+                                android:layout_gravity="start|center" />
+
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_100"
+                                android:gravity="start|center"
+                                android:scaleType="fitXY"
+                                android:layout_weight="0.5"
+                                android:visibility="gone"
+                                style="@style/Titletext"
+                                android:text="@string/forgot_password"
+                                android:layout_gravity="end" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_submit"
+                            style="@style/Buttonsmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="register"
+                            android:text="@string/submit" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Titletext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:gravity="end|center"
+                            android:onClick="alreadyuser"
+                            android:text="@string/already_register" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
