@@ -4,28 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.Registration_Activity">
 
-<include layout="@layout/toolbar_hide"/>
+    <include layout="@layout/toolbar_hide" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
         android:background="@drawable/background"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_10sdp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
                 <androidx.cardview.widget.CardView
@@ -48,15 +51,15 @@
                             android:id="@+id/text"
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
-                            app:counterMaxLength="50"
                             android:layout_height="wrap_content"
-                            android:hint="@string/enter_name">
+                            android:hint="@string/enter_name"
+                            app:counterMaxLength="50">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/user_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:fontFamily="@font/montserrat_bold"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:inputType="text"
                                 android:textSize="@dimen/_10ssp" />
 
@@ -67,31 +70,32 @@
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="10"
-                            android:hint="@string/enter_mobile_number">
+                            android:hint="@string/enter_mobile_number"
+                            app:counterMaxLength="10">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/mobile_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:fontFamily="@font/montserrat_bold"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:inputType="number"
                                 android:maxLength="10"
                                 android:textSize="@dimen/_10ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="50"
-                            android:hint="@string/enter_email_id">
+                            android:hint="@string/enter_email_id"
+                            app:counterMaxLength="50">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/user_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:fontFamily="@font/montserrat_bold"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:inputType="textEmailAddress"
                                 android:textSize="@dimen/_10ssp" />
 
@@ -101,16 +105,16 @@
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="11"
-                            android:hint="@string/enter_dob">
+                            android:hint="@string/enter_dob"
+                            app:counterMaxLength="11">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/dob"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:fontFamily="@font/montserrat_bold"
-                                android:inputType="date"
                                 android:focusable="false"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:inputType="date"
                                 android:textSize="@dimen/_10ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -120,32 +124,33 @@
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="25"
-                            android:hint="@string/password">
+                            android:hint="@string/password"
+                            app:counterMaxLength="25">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/password"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:ems="10"
+                                android:ems="10"
                                 android:fontFamily="@font/montserrat_bold"
                                 android:inputType="textPassword"
                                 android:maxLength="25"
                                 android:textSize="@dimen/_10ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
+
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="25"
-                            android:hint="@string/confirm_password">
+                            android:hint="@string/confirm_password"
+                            app:counterMaxLength="25">
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/c_password"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                              android:ems="10"
+                                android:ems="10"
                                 android:fontFamily="@font/montserrat_bold"
                                 android:inputType="textPassword"
                                 android:maxLength="25"
@@ -160,15 +165,16 @@
                             android:layout_height="wrap_content"
                             android:onClick="register"
                             android:text="@string/submit" />
-                        <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/Titletext"
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Buttonsmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_marginTop="@dimen/_15sdp"
-                            android:padding="@dimen/_15sdp"
                             android:gravity="end|center"
                             android:onClick="alreadyuser"
+                            android:padding="@dimen/_15sdp"
                             android:text="@string/already_register" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>

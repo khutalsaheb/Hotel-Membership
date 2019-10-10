@@ -13,6 +13,7 @@
         android:layout_width="@dimen/_25"
         android:layout_height="@dimen/_25"
         app:layout_constraintBottom_toBottomOf="@+id/profile_pic"
+        app:layout_constraintEnd_toEndOf="@+id/profile_pic"
         app:layout_constraintStart_toEndOf="@+id/profile_pic"
         app:srcCompat="@drawable/ic_edit_black_24dp"
         tools:ignore="PrivateResource" />

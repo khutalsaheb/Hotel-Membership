@@ -1,247 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/swipeContainer"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:background="@drawable/background"
-    android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               android:orientation="vertical">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/future_bookings" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/future_coupons" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/past_stays" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/past_coupons" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/past_ratings_and_reviews" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-
-                            <androidx.appcompat.widget.AppCompatTextView style="@style/TextDash" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/transaction_history" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/profile"
-
-                        style="@style/cards">
-
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/profile" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/about_us" style="@style/cards">
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp"
-                            android:weightSum="1">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/TextDashName"
-                                android:text="@string/about_us" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageViewCollapsing"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:scaleType="fitXY"
@@ -264,7 +40,6 @@
                     android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/appCompatImageView"
                         android:layout_width="@dimen/_50"
                         android:layout_height="@dimen/_50"
                         android:adjustViewBounds="true"
@@ -274,7 +49,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Titletext"
+                        style="@style/TextDash"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/app_name"
@@ -283,50 +58,19 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_100"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/hotel_image" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.core.widget.NestedScrollView>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <include layout="@layout/toolbar_dashboard" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+        <include layout="@layout/item_dashboard_menu" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,16 +1,14 @@
 package com.ivitesse.epicure.activities;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
@@ -19,11 +17,27 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.ivitesse.epicure.R;
+import com.ivitesse.epicure.helper.SessionManager;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Membership_Activity extends AppCompatActivity implements View.OnClickListener {
     private final static int QRcodeWidth = 100;
+    private SessionManager sessionManager;
+    private AppCompatTextView mem_id;
+    private AppCompatTextView mem_type;
+    private AppCompatTextView mem_name;
+    private AppCompatTextView mem_valid;
+    private String userId;
+    private String membership_id;
+    private String email;
+    private String name;
+    private String mobile;
+    private String profile_pic_url;
+    private String dob_data;
+    private String anniversary_date;
+    private String address;
     private Bitmap bitmap;
     private AppCompatImageView imageView;
     private CardView cardviewfull;
@@ -33,6 +47,27 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_design);
+        sessionManager = new SessionManager(getApplicationContext());
+        getDetails();
+
+        init();
+    }
+
+    private void getDetails() {
+        HashMap<String, String> users = sessionManager.getUser();
+        userId = users.get(SessionManager.KEY_USERID);
+        membership_id = users.get(SessionManager.KEY_UID);
+        email = users.get(SessionManager.KEY_EMAIL);
+        name = users.get(SessionManager.KEY_NAME);
+        mobile = users.get(SessionManager.KEY_MOBILE);
+        dob_data = users.get(SessionManager.KEY_DOB);
+        anniversary_date = users.get(SessionManager.KEY_ANIDATE);
+        address = users.get(SessionManager.KEY_ADDRESS);
+        profile_pic_url = users.get(SessionManager.KEY_PICID);
+
+    }
+
+    private void init() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -49,12 +84,20 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
         cardviewfull.setOnClickListener(this);
 
         try {
-            bitmap = TextToImageEncode("SANDESH KHUTAL");
+            bitmap = TextToImageEncode(membership_id);
             imageView.setImageBitmap(bitmap);
 
         } catch (WriterException e) {
             e.printStackTrace();
         }
+
+        mem_id = findViewById(R.id.mem_id);
+        mem_type = findViewById(R.id.mem_type);
+        mem_name = findViewById(R.id.mem_name);
+        mem_valid = findViewById(R.id.mem_valid);
+        mem_id.setText(membership_id);
+        mem_name.setText(name);
+
     }
 
     private Bitmap TextToImageEncode(String Value) throws WriterException {

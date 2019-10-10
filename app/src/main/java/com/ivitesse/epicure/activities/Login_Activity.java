@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.android.volley.Request;
@@ -20,6 +18,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.helper.ConfigUrl;
+import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
+import com.ivitesse.epicure.helper.MyApplication;
 import com.ivitesse.epicure.helper.SessionManager;
 import com.ivitesse.epicure.volleydata.VolleySingleton;
 
@@ -30,18 +30,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Login_Activity extends AppCompatActivity {
+public class Login_Activity extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
+    private AppCompatEditText mem_id;
+    private AppCompatEditText password;
+    private AppCompatEditText user_email;
+    private String Member_ID;
     private View bootomNavigation;
     private BottomSheetDialog bottomSheetDialog;
     private SessionManager sessionManager;
-    AppCompatEditText mem_id, password, user_email;
-    String Member_ID;
     private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        Checkit();
         setContentView(R.layout.activity_login);
         sessionManager = new SessionManager(getApplicationContext());
         mem_id = findViewById(R.id.mem_id);
@@ -95,14 +97,9 @@ public class Login_Activity extends AppCompatActivity {
                                 String anniversary_date = data.getString("anniversary_date");
                                 String address = data.getString("address");
                                 String membership_type = data.getString("membership_type");
-                                String past_coupons = data.getString("past_coupons");
-                                String future_bookings = data.getString("future_bookings");
-                                String future_coupons = data.getString("future_coupons");
-                                String past_stays = data.getString("past_stays");
-                                String past_ratings_and_reviews = data.getString("past_ratings_and_reviews");
-                                String transaction_history = data.getString("transaction_history");
+
                                 sessionManager.createLoginSession(userId, email, name, mobile, profile_pic, dob, anniversary_date,
-                                        address, member_id, membership_type, past_coupons, future_bookings, future_coupons, past_ratings_and_reviews, transaction_history, past_stays);
+                                        address, member_id, membership_type);
 
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
@@ -155,6 +152,20 @@ public class Login_Activity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showNetworkMessage(isConnected);
+    }
+
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        MyApplication.getInstance().setConnectivityListener(this);
+
+    }
+
 
         /*   startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();*/
@@ -179,13 +190,13 @@ public class Login_Activity extends AppCompatActivity {
         final String Email = Objects.requireNonNull(user_email.getText()).toString().trim();
 
         if (TextUtils.isEmpty(Email)) {
-            user_email.setError("Please enter your email");
+            //  user_email.setError("Please enter your email");
             user_email.requestFocus();
             return;
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            user_email.setError("Enter a valid email");
+            //   user_email.setError("Enter a valid email");
             user_email.requestFocus();
             return;
         } else {

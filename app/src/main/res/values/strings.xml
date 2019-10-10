@@ -6,7 +6,7 @@
     <string name="newpassword">Enter New Password</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot password ?</string>
-    <string name="new_user">New User</string>
+    <string name="new_user">New User ?</string>
     <string name="submit">Submit</string>
     <string name="already_register">Already Register ?</string>
     <string name="name">Name</string>
@@ -43,5 +43,7 @@
     <string name="change_password">Change Password</string>
     <string name="no_data">No Data</string>
     <string name="enter_address">Enter Address</string>
+    <string name="no_internet_connection">No Internet Connection Available !!!.\n Please check network connection of your device!!!</string>
+    <string name="retry">Retry</string>
 
 </resources>

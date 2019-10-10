@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +18,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.helper.ConfigUrl;
+import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
+import com.ivitesse.epicure.helper.MyApplication;
 import com.ivitesse.epicure.helper.SessionManager;
 import com.ivitesse.epicure.volleydata.VolleySingleton;
 
@@ -32,16 +32,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Registration_Activity extends AppCompatActivity {
+public class Registration_Activity extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
+    private AppCompatEditText user_name;
+    private AppCompatEditText mobile_number;
+    private AppCompatEditText user_email;
+    private AppCompatEditText dob;
+    private AppCompatEditText password;
+    private AppCompatEditText c_password;
+    private Calendar c;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+    private SessionManager sessionManager;
     private ProgressDialog pDialog;
 
-    AppCompatEditText user_name, mobile_number, user_email, dob, password, c_password;
-    Calendar c;
-    int mYear, mMonth, mDay;
-    SessionManager sessionManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Checkit();
         setContentView(R.layout.activity_registration);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -199,6 +207,7 @@ public class Registration_Activity extends AppCompatActivity {
         /*  startActivity(new Intent(getApplicationContext(), Login_Activity.class));
         finish();*/
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -210,6 +219,20 @@ public class Registration_Activity extends AppCompatActivity {
             pDialog.dismiss();
             pDialog = null;
         }
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showNetworkMessage(isConnected);
+    }
+
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        MyApplication.getInstance().setConnectivityListener(this);
+
     }
 
     public void alreadyuser(@Nullable View view) {
