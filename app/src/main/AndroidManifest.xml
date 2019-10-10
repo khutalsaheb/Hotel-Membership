@@ -4,6 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ivitesse.epicure">
 
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activities.Profile_Activity"/>
+        <activity android:name=".activities.Membership_Activity" />
+        <activity android:name=".activities.Profile_Activity" />
         <activity
             android:name=".activities.Registration_Activity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
@@ -30,6 +49,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.About_Info" />
     </application>
 
     <dist:module dist:instant="true" />

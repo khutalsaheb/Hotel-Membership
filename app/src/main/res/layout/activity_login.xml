@@ -59,7 +59,7 @@
                             android:hint="@string/enter_member_number">
 
                             <androidx.appcompat.widget.AppCompatEditText
-                                android:id="@+id/mobile_number"
+                                android:id="@+id/mem_id"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                               android:ems="10"
@@ -67,7 +67,6 @@
                                 android:inputType="text"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <requestFocus />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout

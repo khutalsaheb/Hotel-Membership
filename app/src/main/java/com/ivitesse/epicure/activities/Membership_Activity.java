@@ -22,7 +22,7 @@ import com.ivitesse.epicure.R;
 
 import java.util.Objects;
 
-public class Profile_Activity extends AppCompatActivity implements View.OnClickListener {
+public class Membership_Activity extends AppCompatActivity implements View.OnClickListener {
     private final static int QRcodeWidth = 100;
     private Bitmap bitmap;
     private AppCompatImageView imageView;

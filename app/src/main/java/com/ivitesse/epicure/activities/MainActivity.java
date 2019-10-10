@@ -4,17 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import com.ivitesse.epicure.R;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    CardView profile,about_us;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        profile = findViewById(R.id.profile);
+        profile.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Profile_Activity.class)));
+        about_us = findViewById(R.id.about_us);
+        about_us.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), About_Info.class)));
 
     }
 
@@ -38,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            startActivity(new Intent(getApplicationContext(), Profile_Activity.class));
+            startActivity(new Intent(getApplicationContext(), Membership_Activity.class));
             return true;
         }
 

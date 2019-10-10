@@ -53,7 +53,7 @@
                             android:hint="@string/enter_name">
 
                             <androidx.appcompat.widget.AppCompatEditText
-                                android:id="@+id/mobile_number"
+                                android:id="@+id/user_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                               android:fontFamily="@font/montserrat_bold"
@@ -71,6 +71,7 @@
                             android:hint="@string/enter_mobile_number">
 
                             <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/mobile_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                               android:fontFamily="@font/montserrat_bold"
@@ -87,6 +88,7 @@
                             android:hint="@string/enter_email_id">
 
                             <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/user_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                               android:fontFamily="@font/montserrat_bold"
@@ -99,26 +101,11 @@
                             style="@style/TextInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:counterMaxLength="10"
+                            app:counterMaxLength="11"
                             android:hint="@string/enter_dob">
 
                             <androidx.appcompat.widget.AppCompatEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                              android:fontFamily="@font/montserrat_bold"
-                                android:inputType="date"
-                                android:focusable="false"
-                                android:textSize="@dimen/_10ssp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/TextInputLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:counterMaxLength="10"
-                            android:hint="@string/enter_anniversary_date">
-
-                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/dob"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                               android:fontFamily="@font/montserrat_bold"
@@ -166,38 +153,6 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Buttonsmall"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.5"
-                                android:text="@string/add_photo"
-                                android:layout_gravity="start|center" />
-
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_100"
-                                android:gravity="start|center"
-                                android:scaleType="fitXY"
-                                android:layout_weight="0.5"
-                                android:visibility="gone"
-                                style="@style/Titletext"
-                                android:text="@string/forgot_password"
-                                android:layout_gravity="end" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/button_submit"
                             style="@style/Buttonsmall"
@@ -210,6 +165,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:padding="@dimen/_15sdp"
                             android:gravity="end|center"
                             android:onClick="alreadyuser"
                             android:text="@string/already_register" />
