@@ -1,5 +1,6 @@
 package com.ivitesse.epicure.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.ivitesse.epicure.volleydata.VolleySingleton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -33,9 +35,9 @@ import java.util.Objects;
 public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, ConnectivityChangeReceiver.ConnectivityReceiverListener {
 
     private CardView profile;
-    private CardView about_us;
+    private CardView about_us, fcoupons, pastcoupons, ratings;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private String userId;
+    private String userId, Name;
     private String past_coupons;
     private String future_bookings;
     private String future_coupons;
@@ -47,7 +49,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     private AppCompatTextView tfuture_coupons;
     private AppCompatTextView tpast_ratings_and_reviews;
     private AppCompatTextView ttransaction_history;
-    private AppCompatTextView tpast_stays;
+    private AppCompatTextView tpast_stays, welcome;
     private SessionManager sessionManager;
 
     @Override
@@ -55,17 +57,19 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         super.onCreate(savedInstanceState);
         Checkit();
         setContentView(R.layout.dashboard);
-        init();
+
         sessionManager = new SessionManager(getApplicationContext());
         HashMap<String, String> users = sessionManager.getUser();
         userId = users.get(SessionManager.KEY_USERID);
+        Name = users.get(SessionManager.KEY_NAME);
         if (userId == null) {
             startActivity(new Intent(getApplicationContext(), Login_Activity.class));
             finish();
         }
-
+        init();
     }
 
+    @SuppressLint("SetTextI18n")
     private void init() {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -80,6 +84,19 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         tpast_ratings_and_reviews = findViewById(R.id.tpast_ratings_and_reviews);
         ttransaction_history = findViewById(R.id.ttransaction_history);
         tpast_stays = findViewById(R.id.tpast_stays);
+        welcome = findViewById(R.id.welcome);
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            welcome.setText("Good Morning " + " " + Name);
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
+            welcome.setText("Good Afternoon " + " " + Name);
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
+            welcome.setText("Good Evening " + " " + Name);
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
+            welcome.setText("Good Night " + " " + Name);
+        }
 
         swipeRefreshLayout = findViewById(R.id.swipe);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -91,7 +108,13 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         profile.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Profile_Activity.class)));
         about_us = findViewById(R.id.about_us);
         about_us.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), About_Info.class)));
+        fcoupons = findViewById(R.id.fcoupons);
+        fcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Future_Coupons.class)));
         //  getData();
+        pastcoupons = findViewById(R.id.pastcoupons);
+        pastcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Past_Coupons.class)));
+        ratings = findViewById(R.id.ratings);
+        ratings.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Review_Rating.class)));
 
     }
 

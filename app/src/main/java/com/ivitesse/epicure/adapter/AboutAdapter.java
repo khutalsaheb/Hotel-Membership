@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ivitesse.epicure.R;
@@ -50,7 +49,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
         holder.layout.setVisibility(View.GONE);
         if (currentPosition == position) {
-            Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+            Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.slide_up);
             holder.layout.setVisibility(View.VISIBLE);
             holder.layout.startAnimation(slideDown);
         }

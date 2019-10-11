@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -18,12 +20,18 @@ public class BaseActivity extends AppCompatActivity {
 
 
     void Checkit() {
+
         mNetworkReceiver = new ConnectivityChangeReceiver();
         registerReceiver(mNetworkReceiver, new IntentFilter(
                 ConnectivityManager.CONNECTIVITY_ACTION
         ));
 
-        registerNetworkBroadcastForNougat();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
     }
 
 
@@ -40,15 +48,6 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-
-    private void registerNetworkBroadcastForNougat() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-        }
-    }
 
     private void unregisterNetworkChanges() {
         try {

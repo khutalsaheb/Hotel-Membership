@@ -2,10 +2,13 @@ package com.ivitesse.epicure.helper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import androidx.annotation.NonNull;
+
+import com.ivitesse.epicure.activities.MainActivity;
 
 import java.util.HashMap;
 
@@ -20,13 +23,13 @@ public class SessionManager {
     public static final String KEY_ADDRESS = "address";
     private static final String KEY_MEMTYPE = "membership_type";
     public static final String KEY_UID = "uuid";
-   /* public static final String KEY_PASTCOUPON = "past_coupons";
-    public static final String KEY_PASTSTAY = "past_stays";
-    public static final String KEY_FUTUREBOOKINGS = "future_bookings";
-    public static final String KEY_FUTURECOUPONS = "future_coupons";
-    public static final String KEY_PASTRR = "past_ratings_and_reviews";
-    public static final String KEY_TRANSACTION = "transaction_history";
-*/
+    /* public static final String KEY_PASTCOUPON = "past_coupons";
+     public static final String KEY_PASTSTAY = "past_stays";
+     public static final String KEY_FUTUREBOOKINGS = "future_bookings";
+     public static final String KEY_FUTURECOUPONS = "future_coupons";
+     public static final String KEY_PASTRR = "past_ratings_and_reviews";
+     public static final String KEY_TRANSACTION = "transaction_history";
+ */
     //@NonNull String userId,@NonNull String email,@NonNull String name,@NonNull String mobile,@NonNull String profile_pic,@NonNull String dob,@NonNull String anniversary_date,@NonNull String
 // address,@NonNull String member_id,@NonNull String membership_type,@NonNull String past_coupons,@NonNull String future_bookings,@NonNull String future_coupons,@NonNull String past_ratings_and_reviews,@NonNull String transaction_history,@NonNull String past_stays
     private static final String IS_LOGIN = "IsLoggedIn";
@@ -108,5 +111,14 @@ public class SessionManager {
         return user;
     }
 
+
+    public void logoutUser() {
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(_context, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        _context.startActivity(i);
+    }
 
 }

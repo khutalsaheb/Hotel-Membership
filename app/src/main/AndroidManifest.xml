@@ -25,6 +25,8 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <dist:module dist:instant="true" />
+
     <application
         android:name=".helper.MyApplication"
         android:allowBackup="true"
@@ -33,7 +35,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activities.Review_Rating"/>
         <activity android:name=".activities.Membership_Activity" />
         <activity android:name=".activities.Profile_Activity" />
         <activity
@@ -57,6 +61,8 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.About_Info" />
         <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.Future_Coupons" />
+        <activity android:name=".activities.Past_Coupons" />
 
         <receiver
             android:name=".helper.ConnectivityChangeReceiver"
@@ -68,7 +74,5 @@
             </intent-filter>
         </receiver>
     </application>
-
-    <dist:module dist:instant="true" />
 
 </manifest>

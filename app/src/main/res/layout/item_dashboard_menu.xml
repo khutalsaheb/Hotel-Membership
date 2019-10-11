@@ -39,7 +39,9 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView style="@style/cards">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fcoupons"
+                style="@style/cards">
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -93,7 +95,9 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView style="@style/cards">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pastcoupons"
+                style="@style/cards">
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -123,7 +127,9 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <androidx.cardview.widget.CardView style="@style/cards">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ratings"
+                style="@style/cards">
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat

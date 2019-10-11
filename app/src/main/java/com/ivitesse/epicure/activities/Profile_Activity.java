@@ -640,7 +640,10 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                 bottomSheetDialog.setContentView(bootomNavigation);
                 bottomSheetDialog.show();
                 break;
-
+            case R.id.logout:
+                sessionManager.logoutUser();
+                finish();
+                break;
 
         }
     }

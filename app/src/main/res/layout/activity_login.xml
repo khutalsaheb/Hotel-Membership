@@ -78,7 +78,6 @@
                         android:maxLength="50"
                         android:textSize="@dimen/_12sdp" />
 
-                    <requestFocus />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton

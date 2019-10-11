@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <include layout="@layout/toolbar_hide" />
 
@@ -38,7 +39,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_name"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -61,7 +62,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_email_id"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -85,7 +86,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_mobile_number"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -109,7 +110,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_dob"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -132,7 +133,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_anniversary_date"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -155,7 +156,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/change_password"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
@@ -178,7 +179,7 @@
                     android:gravity="center|start"
                     android:padding="@dimen/_10sdp"
                     android:text="@string/enter_address"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     tools:ignore="PrivateResource,RtlCompat" />
