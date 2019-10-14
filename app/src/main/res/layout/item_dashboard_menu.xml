@@ -1,231 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <androidx.cardview.widget.CardView style="@style/cards">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tfuture_bookings"
-                        style="@style/TextDash" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/future_bookings" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fcoupons"
-                style="@style/cards">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tfuture_coupons"
-                        style="@style/TextDash" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-
-                        style="@style/TextDashName"
-                        android:text="@string/future_coupons" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_gravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tpast_stays"
-                        style="@style/TextDash" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/past_stays" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_future_booking"
+                    style="@style/cards">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/pastcoupons"
-                style="@style/cards">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tfuture_bookings"
+                            style="@style/TextDash" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/future_bookings" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fcoupons"
+                    style="@style/cards">
 
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tpast_coupons"
-                        style="@style/TextDash" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tfuture_coupons"
+                            style="@style/TextDash" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/past_coupons" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+                        <androidx.appcompat.widget.AppCompatTextView
 
+                            style="@style/TextDashName"
+                            android:text="@string/future_coupons" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/past_stays_card"
+
+                    style="@style/cards">
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tpast_stays"
+                            style="@style/TextDash" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/past_stays" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pastcoupons"
+                    style="@style/cards">
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tpast_coupons"
+                            style="@style/TextDash" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/past_coupons" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ratings"
+                    style="@style/cards">
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tpast_ratings_and_reviews"
+                            style="@style/TextDash" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/past_ratings_and_reviews" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/transaction_history_card"
+                    style="@style/cards">
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/ttransaction_history"
+                            style="@style/TextDash" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/transaction_history" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile"
+
+                    style="@style/cards">
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/profile" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/about_us"
+                    style="@style/cards">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
+                            android:text="@string/about_us" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/ratings"
-                style="@style/cards">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tpast_ratings_and_reviews"
-                        style="@style/TextDash" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/past_ratings_and_reviews" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/cards">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/ttransaction_history"
-                        style="@style/TextDash" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/transaction_history" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/profile"
-
-                style="@style/cards">
-
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/profile" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/about_us"
-                style="@style/cards">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_10sdp"
-                    android:weightSum="1">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/TextDashName"
-                        android:text="@string/about_us" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

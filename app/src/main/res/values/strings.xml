@@ -49,5 +49,34 @@
     <string name="add_review">Add Review</string>
     <string name="title_max_20_words">Title(Max 20 Words)</string>
     <string name="write_review">Write Review</string>
+    <string name="add_new_booking">Add New Booking</string>
+    <string name="search_hotels">Search Hotel</string>
+    <string name="search">Search</string>
+    <string name="trending_now">Trending Now</string>
+    <string name="packages">Packages</string>
+    <string name="guests">Guests</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="select_your_hotel">Select your hotel</string>
+    <string name="amenities">Amenities</string>
+    <string name="policies">Policies</string>
+    <string name="photos">Show Photos</string>
+    <string name="pay_after_reach_at_hotel">Pay After reach at hotel.</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="check_out">CHECK-OUT</string>
+    <string name="check_in">CHECK-IN</string>
+    <string name="city_area_or_hotel">CITY, AREA OR HOTEL</string>
+    <string name="please_check_your_details">Please check your details</string>
+    <string name="hey_shanky">Hey Shanky!</string>
+     <string name="rooms">Rooms</string>
+    <string name="history">History</string>
+    <string name="no_record_found">NO RECORD FOUND</string>
+    <string name="coupon_code">Coupon Code</string>
+    <string name="you_have_win_5_off_in_next_booking">YOU HAVE WIN 5 % OFF IN NEXT BOOKING.</string>
+    <string name="reviews">Reviews</string>
+    <string name="book_now">Book Now</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="occasion">occasion</string>
+    <string name="date">DATE</string>
 
 </resources>

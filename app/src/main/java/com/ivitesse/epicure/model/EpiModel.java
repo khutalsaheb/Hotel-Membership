@@ -4,6 +4,72 @@ import androidx.annotation.NonNull;
 
 public class EpiModel {
     private String name, description;
+    private String dt;
+    private String yeass;
+    private String saving;
+    private String original_value;
+    private String discount_value;
+    private String date_text;
+
+    public EpiModel(String dt, String yeass, String title, String title_desc, String original_value, String discount_value, String saving) {
+        this.dt = dt;
+        this.yeass = yeass;
+        this.title = title;
+        this.title_desc = title_desc;
+        this.original_value = original_value;
+        this.discount_value = discount_value;
+        this.saving = saving;
+
+
+    }
+
+    public String getSaving() {
+        return saving;
+    }
+
+    public void setSaving(String saving) {
+        this.saving = saving;
+    }
+
+    public String getDt() {
+        return dt;
+    }
+
+    public void setDt(String dt) {
+        this.dt = dt;
+    }
+
+    public String getYeass() {
+        return yeass;
+    }
+
+    public void setYeass(String yeass) {
+        this.yeass = yeass;
+    }
+
+    public String getOriginal_value() {
+        return original_value;
+    }
+
+    public void setOriginal_value(String original_value) {
+        this.original_value = original_value;
+    }
+
+    public String getDiscount_value() {
+        return discount_value;
+    }
+
+    public void setDiscount_value(String discount_value) {
+        this.discount_value = discount_value;
+    }
+
+    public String getDate_text() {
+        return date_text;
+    }
+
+    public void setDate_text(String date_text) {
+        this.date_text = date_text;
+    }
 
     public EpiModel(String title, String description, String offer_from, String offer_valid) {
         this.title = title;

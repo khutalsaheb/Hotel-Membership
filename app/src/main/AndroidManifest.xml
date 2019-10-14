@@ -37,7 +37,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activities.Review_Rating"/>
+        <activity android:name=".activities.Past_Stays" />
+        <activity android:name=".activities.Review_Rating" />
+        <activity android:name=".activities.Transaction_History" />
         <activity android:name=".activities.Membership_Activity" />
         <activity android:name=".activities.Profile_Activity" />
         <activity
@@ -73,6 +75,11 @@
                     tools:ignore="BatteryLife" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activities.Futures_Booking" />
+        <activity android:name=".activities.Hotel_Home_Activity" />
+        <activity android:name=".activities.Hotel_Home_Activity_Result" />
+        <activity android:name=".activities.Hotel_Home_Activity_Result_Full" />
     </application>
 
 </manifest>

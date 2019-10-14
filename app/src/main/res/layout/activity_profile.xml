@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -42,7 +42,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
                 <View
                     android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -65,7 +65,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
 
                 <View
@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -89,7 +89,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
 
                 <View
@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -113,7 +113,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
                 <View
                     android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -136,7 +136,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
                 <View
                     android:layout_width="match_parent"
@@ -150,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -159,7 +159,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
                 <View
                     android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawableEnd="@drawable/ic_edit"
                     android:drawablePadding="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center|start"
@@ -182,7 +182,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
-                    tools:ignore="PrivateResource,RtlCompat" />
+                    tools:ignore="RtlCompat" />
 
                 <View
                     android:layout_width="match_parent"

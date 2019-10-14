@@ -35,9 +35,9 @@ import java.util.Objects;
 public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, ConnectivityChangeReceiver.ConnectivityReceiverListener {
 
     private CardView profile;
-    private CardView about_us, fcoupons, pastcoupons, ratings;
+    String userId, Name;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private String userId, Name;
+    private CardView about_us, fcoupons, pastcoupons, ratings, transaction_history_card, past_stays_card, card_future_booking;
     private String past_coupons;
     private String future_bookings;
     private String future_coupons;
@@ -85,6 +85,26 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         ttransaction_history = findViewById(R.id.ttransaction_history);
         tpast_stays = findViewById(R.id.tpast_stays);
         welcome = findViewById(R.id.welcome);
+        swipeRefreshLayout = findViewById(R.id.swipe);
+        profile = findViewById(R.id.profile);
+        about_us = findViewById(R.id.about_us);
+        fcoupons = findViewById(R.id.fcoupons);
+        pastcoupons = findViewById(R.id.pastcoupons);
+        ratings = findViewById(R.id.ratings);
+        transaction_history_card = findViewById(R.id.transaction_history_card);
+        past_stays_card = findViewById(R.id.past_stays_card);
+        card_future_booking = findViewById(R.id.card_future_booking);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(() -> getData()
+        );
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.YELLOW, Color.BLUE);
+        swipeRefreshLayout.setHapticFeedbackEnabled(true);
+        Calc();
+        Onclick();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void Calc() {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
@@ -98,24 +118,17 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
             welcome.setText("Good Night " + " " + Name);
         }
 
-        swipeRefreshLayout = findViewById(R.id.swipe);
-        swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.post(() -> getData()
-        );
-        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.YELLOW, Color.BLUE);
-        swipeRefreshLayout.setHapticFeedbackEnabled(true);
-        profile = findViewById(R.id.profile);
-        profile.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Profile_Activity.class)));
-        about_us = findViewById(R.id.about_us);
-        about_us.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), About_Info.class)));
-        fcoupons = findViewById(R.id.fcoupons);
-        fcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Future_Coupons.class)));
-        //  getData();
-        pastcoupons = findViewById(R.id.pastcoupons);
-        pastcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Past_Coupons.class)));
-        ratings = findViewById(R.id.ratings);
-        ratings.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Review_Rating.class)));
+    }
 
+    private void Onclick() {
+        profile.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Profile_Activity.class)));
+        about_us.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), About_Info.class)));
+        fcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Future_Coupons.class)));
+        pastcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Past_Coupons.class)));
+        ratings.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Review_Rating.class)));
+        transaction_history_card.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Transaction_History.class)));
+        past_stays_card.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Transaction_History.class)));
+        card_future_booking.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Futures_Booking.class)));
     }
 
     private void getData() {
