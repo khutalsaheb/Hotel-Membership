@@ -2,15 +2,17 @@ package com.ivitesse.epicure.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -39,12 +41,14 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
     private AppCompatEditText dob;
     private AppCompatEditText password;
     private AppCompatEditText c_password;
+    private AppCompatEditText address;
     private Calendar c;
     private int mYear;
     private int mMonth;
     private int mDay;
     private SessionManager sessionManager;
-    private ProgressDialog pDialog;
+    private RadioGroup radioSexGroup;
+    private AppCompatRadioButton radioSexButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +68,7 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
         mobile_number = findViewById(R.id.mobile_number);
         user_email = findViewById(R.id.user_email);
         dob = findViewById(R.id.dob);
-
+        address = findViewById(R.id.address);
         c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
@@ -85,6 +89,9 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
         });
         password = findViewById(R.id.password);
         c_password = findViewById(R.id.c_password);
+        radioSexGroup = findViewById(R.id.gender_button_view);
+
+
     }
 
     public void register(@Nullable View view) {
@@ -95,6 +102,7 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
         final String CPassword = Objects.requireNonNull(c_password.getText()).toString().trim();
         final String DOB = Objects.requireNonNull(dob.getText()).toString().trim();
         final String Mobile = Objects.requireNonNull(mobile_number.getText()).toString().trim();
+        final String Address = Objects.requireNonNull(address.getText()).toString().trim();
 
 
         if (TextUtils.isEmpty(Username)) {
@@ -125,6 +133,18 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
             dob.requestFocus();
             return;
         }
+
+        if (radioSexGroup.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getApplicationContext(), "Please select Gender", Toast.LENGTH_SHORT).show();
+            Log.d("QAOD", "Gender is Null");
+            return;
+        }
+
+        if (TextUtils.isEmpty(Address)) {
+            address.setError("Enter a Address");
+            address.requestFocus();
+            return;
+        }
         if (TextUtils.isEmpty(Password)) {
             password.setError("Enter a password");
             password.requestFocus();
@@ -140,13 +160,14 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
             Toast.makeText(getApplicationContext(), "Passwords not same...", Toast.LENGTH_SHORT).show();
 
         } else {
-            pDialog = new ProgressDialog(this);
-            // Showing progress dialog before making http request
-            pDialog.setMessage("Processing...");
-            pDialog.show();
+            showLoading();
+
+            int selectedId = radioSexGroup.getCheckedRadioButtonId();
+            radioSexButton = findViewById(selectedId);
+            String Gender = radioSexButton.getText().toString();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.RegistrationUrl,
                     response -> {
-                        hidePDialog();
+                        hideLoading();
 
                         try {
                             JSONObject obj = new JSONObject(response);
@@ -168,7 +189,7 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
                                 sessionManager.createUser(member_id);
 
                             } else {
-                                hidePDialog();
+                                hideLoading();
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -176,7 +197,7 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
                         }
                     },
                     error -> {
-                        hidePDialog();
+                        hideLoading();
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
             ) {
@@ -187,6 +208,8 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
                     params.put("mobile", Mobile);
                     params.put("email", Email);
                     params.put("dob", DOB);
+                    params.put("gender", Gender);
+                    params.put("address", Address);
                     params.put("password", Password);
                     return params;
                 }
@@ -211,15 +234,9 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
+        hideLoading();
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
@@ -238,5 +255,22 @@ public class Registration_Activity extends BaseActivity implements ConnectivityC
     public void alreadyuser(@Nullable View view) {
         startActivity(new Intent(getApplicationContext(), Login_Activity.class));
         finish();
+
+
+        /*   int selectedId = radioSexGroup.getCheckedRadioButtonId();
+        radioSexButton = findViewById(selectedId);
+
+        if (radioSexGroup.getCheckedRadioButtonId() == -1) {
+            Log.d("QAOD", "Gender is Selected");
+        } else {
+            Toast.makeText(getApplicationContext(), "Please select Gender", Toast.LENGTH_SHORT).show();
+            Log.d("QAOD", "Gender is Null");
+        }
+
+ if (rd.matches("")) {
+            Toast.makeText(Registration_Activity.this, "Select Gender", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(Registration_Activity.this, radioSexButton.getText(), Toast.LENGTH_SHORT).show();
+        }*/
     }
 }

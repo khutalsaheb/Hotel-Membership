@@ -2,24 +2,36 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="@drawable/background"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_hide" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_hide" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_50"
+        android:background="@drawable/nodatafound"
+        android:padding="@dimen/_10sdp"
+        android:visibility="gone"
+        android:scaleType="fitXY"/>
+
+    <!--   <androidx.appcompat.widget.AppCompatTextView
         style="@style/TextDashName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/curve_toolbar_bg"
         android:text="@string/no_data"
         android:textColor="@color/white"
-        android:visibility="gone" />
+        android:visibility="gone" />-->
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

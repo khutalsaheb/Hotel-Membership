@@ -3,7 +3,6 @@ package com.ivitesse.epicure.activities;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -77,7 +76,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
     private int mMonth;
     private int mDay;
     private SessionManager sessionManager;
-    private String userId;
+    String userId;
     private String email;
     private String name;
     private String mobile;
@@ -89,7 +88,6 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
     private AppCompatEditText cpassword;
     private BottomSheetDialog bottomSheetDialog;
     private TextInputLayout textInputLayout;
-    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -181,7 +179,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
 
     }
 
-    private void showPictureDialog() {
+    void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Select Action");
         String[] pictureDialogItems = {
@@ -260,13 +258,10 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
     }
 
     private void GetUpdations(String param, String value) {
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Processing...");
-        pDialog.show();
+        showLoading();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.updateUserDetails,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
@@ -283,7 +278,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                             getDetails();
                             Creation();
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -291,7 +286,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
@@ -319,13 +314,10 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
 
 
     private void uploadImage(Bitmap bitmap) {
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Processing...");
-        pDialog.show();
+        showLoading();
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, ConfigUrl.updateUserDetails,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
                     try {
                         JSONObject obj = new JSONObject(new String(response.data));
 
@@ -342,7 +334,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                             getDetails();
                             Creation();
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -350,7 +342,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
@@ -387,7 +379,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
         overridePendingTransition(0, 0);
     }
 
-    private byte[] getFileDataFromDrawable(Bitmap bitmap) {
+    byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
@@ -423,7 +415,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
                 .check();
     }
 
-    private void openSettingsDialog() {
+    void openSettingsDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Profile_Activity.this);
         builder.setTitle("Required Permissions");
@@ -443,14 +435,7 @@ public class Profile_Activity extends BaseActivity implements View.OnClickListen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
+        hideLoading();
     }
 
 

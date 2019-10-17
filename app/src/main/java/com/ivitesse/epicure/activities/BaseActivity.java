@@ -4,20 +4,20 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.android.material.button.MaterialButton;
 import com.ivitesse.epicure.R;
+import com.ivitesse.epicure.dialogs.CustomProgressDialog;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.squareup.picasso.Picasso;
 
 public class BaseActivity extends AppCompatActivity {
     private BroadcastReceiver mNetworkReceiver;
 
+    private CustomProgressDialog customProgressDialog;
 
     void Checkit() {
 
@@ -57,9 +57,30 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    void showLoading() {
+        hideLoading();
+        if (customProgressDialog == null) {
+            customProgressDialog = new CustomProgressDialog();
+        }
+        try {
+            customProgressDialog.show(getSupportFragmentManager().beginTransaction(), "");
+        } catch (Exception ignored) {
+
+        }
+    }
+
+
+    void hideLoading() {
+        if (customProgressDialog != null) {
+            customProgressDialog.dismiss();
+            customProgressDialog.dismissAllowingStateLoss();
+        }
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         unregisterNetworkChanges();
+        hideLoading();
     }
 }

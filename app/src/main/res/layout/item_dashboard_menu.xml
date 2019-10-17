@@ -29,12 +29,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card_future_booking"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -46,19 +46,21 @@
 
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/TextDashName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="@string/future_bookings" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fcoupons"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -86,13 +88,13 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/past_stays_card"
 
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -111,13 +113,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/pastcoupons"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -143,13 +145,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ratings"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -168,13 +170,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/transaction_history_card"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -202,13 +204,13 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/profile"
 
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_20sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"
@@ -223,12 +225,12 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/about_us"
-                    style="@style/cards">
+                    style="@style/carddashboard">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_margin="@dimen/_20sdp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/_10sdp"

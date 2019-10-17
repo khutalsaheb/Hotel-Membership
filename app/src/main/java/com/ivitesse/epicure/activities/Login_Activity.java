@@ -1,8 +1,8 @@
 package com.ivitesse.epicure.activities;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
@@ -38,7 +39,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
     private View bootomNavigation;
     private BottomSheetDialog bottomSheetDialog;
     private SessionManager sessionManager;
-    private ProgressDialog pDialog;
+    AppCompatTextView forgot_password;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +47,10 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
         Checkit();
         setContentView(R.layout.activity_login);
         sessionManager = new SessionManager(getApplicationContext());
+
+        forgot_password = findViewById(R.id.forgot_password);
+        forgot_password.setPaintFlags(forgot_password.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        forgot_password.setOnClickListener(v -> forgotpassword());
         mem_id = findViewById(R.id.mem_id);
         password = findViewById(R.id.password);
         HashMap<String, String> users = sessionManager.getUserDetails();
@@ -74,13 +79,10 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
             password.setError("Enter a password");
             password.requestFocus();
         } else {
-            pDialog = new ProgressDialog(this);
-            // Showing progress dialog before making http request
-            pDialog.setMessage("Checking...");
-            pDialog.show();
+            showLoading();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.LoginscreenUrl,
                     response -> {
-                        hidePDialog();
+                        hideLoading();
                         try {
                             JSONObject obj = new JSONObject(response);
 
@@ -96,7 +98,8 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                                 String dob = data.getString("dob");
                                 String anniversary_date = data.getString("anniversary_date");
                                 String address = data.getString("address");
-                                String membership_type = data.getString("membership_type");
+                                String membership_type = data.getString("packageId");
+                              //  String membership_type = data.getString("membership_type");
 
                                 sessionManager.createLoginSession(userId, email, name, mobile, profile_pic, dob, anniversary_date,
                                         address, member_id, membership_type);
@@ -104,7 +107,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
                             } else {
-                                hidePDialog();
+                                hideLoading();
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -112,7 +115,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                         }
                     },
                     error -> {
-                        hidePDialog();
+                        hideLoading();
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
             ) {
@@ -142,15 +145,9 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
+        hideLoading();
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
@@ -176,7 +173,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
     }
 
     @SuppressLint("InflateParams")
-    public void forgotpassword(@Nullable View view) {
+    public void forgotpassword() {
         bootomNavigation = getLayoutInflater().inflate(R.layout.forgot_password_bottom, null);
         bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(bootomNavigation);
@@ -200,13 +197,10 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
             user_email.requestFocus();
             return;
         } else {
-            pDialog = new ProgressDialog(this);
-            // Showing progress dialog before making http request
-            pDialog.setMessage("Checking Email..");
-            pDialog.show();
+            showLoading();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.forgetPassword,
                     response -> {
-                        hidePDialog();
+                        hideLoading();
 
                         try {
                             JSONObject obj = new JSONObject(response);
@@ -218,7 +212,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                                         .setPositiveButton("Ok", (dialog, which) -> dialog.dismiss())
                                         .show();
                             } else {
-                                hidePDialog();
+                                hideLoading();
 
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -227,7 +221,7 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                         }
                     },
                     error -> {
-                        hidePDialog();
+                        hideLoading();
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
             ) {

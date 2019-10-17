@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 
 import com.ivitesse.epicure.R;
 
@@ -37,40 +38,40 @@ import static android.graphics.PorterDuff.Mode.SRC_IN;
 
 public class TicketView extends View {
 
-    public static final String TAG = TicketView.class.getSimpleName();
+    private static final String TAG = TicketView.class.getSimpleName();
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({Orientation.HORIZONTAL, Orientation.VERTICAL})
-    public @interface Orientation {
+    @interface Orientation {
         int HORIZONTAL = 0;
         int VERTICAL = 1;
     }
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({DividerType.NORMAL, DividerType.DASH})
-    public @interface DividerType {
+    @interface DividerType {
         int NORMAL = 0;
         int DASH = 1;
     }
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CornerType.NORMAL, CornerType.ROUNDED})
-    public @interface CornerType {
+    @interface CornerType {
         int NORMAL = 0;
         int ROUNDED = 1;
         int SCALLOP = 2;
     }
 
-    private Paint mBackgroundPaint = new Paint();
-    private Paint mBorderPaint = new Paint();
-    private Paint mDividerPaint = new Paint();
+    private final Paint mBackgroundPaint = new Paint();
+    private final Paint mBorderPaint = new Paint();
+    private final Paint mDividerPaint = new Paint();
     private int mOrientation;
-    private Path mPath = new Path();
+    private final Path mPath = new Path();
     private boolean mDirty = true;
     private float mDividerStartX, mDividerStartY, mDividerStopX, mDividerStopY;
-    private RectF mRect = new RectF();
-    private RectF mRoundedCornerArc = new RectF();
-    private RectF mScallopCornerArc = new RectF();
+    private final RectF mRect = new RectF();
+    private final RectF mRoundedCornerArc = new RectF();
+    private final RectF mScallopCornerArc = new RectF();
     private int mScallopHeight;
     private float mScallopPosition;
     private float mScallopPositionPercent;
@@ -92,23 +93,23 @@ public class TicketView extends View {
     private final Paint mShadowPaint = new Paint(ANTI_ALIAS_FLAG);
     private float mShadowBlurRadius = 0f;
 
-    public TicketView(Context context) {
+    public TicketView(@Nullable Context context) {
         super(context);
         init(null);
     }
 
-    public TicketView(Context context, AttributeSet attrs) {
+    public TicketView(@Nullable Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public TicketView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TicketView(@Nullable Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@Nullable Canvas canvas) {
         super.onDraw(canvas);
         if (mDirty) {
             doLayout();

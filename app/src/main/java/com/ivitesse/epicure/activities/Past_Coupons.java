@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ivitesse.epicure.R;
-import com.ivitesse.epicure.adapter.FutureCouponsAdapter;
 import com.ivitesse.epicure.adapter.PastCouponsAdapter;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.ivitesse.epicure.helper.MyApplication;
@@ -20,7 +19,7 @@ import java.util.Objects;
 
 public class Past_Coupons extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
     private ArrayList<EpiModel> epiModels;
-    RecyclerView recyclerview;
+    private RecyclerView recyclerview;
     private Toolbar toolbar;
     private ProgressDialog pDialog;
 

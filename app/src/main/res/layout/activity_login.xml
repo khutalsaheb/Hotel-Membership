@@ -81,41 +81,46 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.button.MaterialButton
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/forgot_password"
+                    style="@style/TextDashName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_submit"
                     style="@style/Buttonsmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="login"
                     android:text="@string/login" />
+                <!--
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_15sdp">
+                -->
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextDashName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp">
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center|end"
+                    android:onClick="newuser"
+                    android:padding="@dimen/_5sdp"
+                    android:text="@string/new_user"
+                    android:textColor="@color/black" />
 
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Buttonsmall"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:onClick="newuser"
-                        android:text="@string/new_user"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Buttonsmall"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:onClick="forgotpassword"
-                        android:text="@string/forgot_password"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>

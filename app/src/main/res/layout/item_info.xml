@@ -68,6 +68,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="start|center"
                 android:text="@string/app_name"
+                android:textAllCaps="false"
                 android:textColor="@color/black" />
 
 

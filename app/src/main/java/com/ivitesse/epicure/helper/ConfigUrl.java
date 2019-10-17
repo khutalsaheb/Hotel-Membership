@@ -5,13 +5,12 @@ public class ConfigUrl {
     private final static String BaseUrl = "http://ivitessewebdemo.com/johngov/epicureapp/api/";
     public final static String LoginscreenUrl = BaseUrl + "login";
     public final static String RegistrationUrl = BaseUrl + "registration";
-
     public final static String forgetPassword = BaseUrl + "forgetPassword";
     public final static String updateUserDetails = BaseUrl + "updateUserDetails";
     public final static String dashboard = BaseUrl + "dashboard";
     public final static String getTermsAndRules = BaseUrl + "getTermsAndRules";
-    public final static String verifyUser = BaseUrl + "verifyUser";
-    public final static String getCabsMarkers = BaseUrl + "getCabsMarkers";
+    public final static String getRatingAndReviews = BaseUrl + "getRatingAndReviews";
+    public final static String addRatingAndReview = BaseUrl + "addRatingAndReview";
     public final static String getCabFare = BaseUrl + "getCabFare";
 
 }

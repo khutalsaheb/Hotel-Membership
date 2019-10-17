@@ -36,7 +36,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity
+            android:name=".activities.Offer_Details_coupons"
+            android:label="@string/title_activity_offer__details_coupons"
+            android:parentActivityName=".activities.Future_Coupons"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ivitesse.epicure.activities.Future_Coupons" />
+        </activity>
         <activity android:name=".activities.Past_Stays" />
         <activity android:name=".activities.Review_Rating" />
         <activity android:name=".activities.Transaction_History" />
@@ -80,6 +90,7 @@
         <activity android:name=".activities.Hotel_Home_Activity" />
         <activity android:name=".activities.Hotel_Home_Activity_Result" />
         <activity android:name=".activities.Hotel_Home_Activity_Result_Full" />
+        <activity android:name=".activities.Future_Booking_List" />
     </application>
 
 </manifest>

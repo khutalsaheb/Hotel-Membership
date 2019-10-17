@@ -119,6 +119,61 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <RadioGroup
+                            android:id="@+id/gender_button_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio0"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:background="@drawable/radio_flat_selector"
+                                android:button="@android:color/transparent"
+                                android:checked="false"
+                                android:gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <androidx.appcompat.widget.AppCompatRadioButton
+                                android:id="@+id/radio1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:background="@drawable/radio_flat_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                        </RadioGroup>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/TextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/enter_address"
+                            app:counterMaxLength="125">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/address"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:inputType="textPostalAddress"
+                                android:maxLength="125"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/TextInputLayout"
@@ -158,7 +213,7 @@
 
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.button.MaterialButton
+                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/button_submit"
                             style="@style/Buttonsmall"
                             android:layout_width="wrap_content"
@@ -166,8 +221,8 @@
                             android:onClick="register"
                             android:text="@string/submit" />
 
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Buttonsmall"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextDashName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
@@ -175,7 +230,8 @@
                             android:gravity="end|center"
                             android:onClick="alreadyuser"
                             android:padding="@dimen/_15sdp"
-                            android:text="@string/already_register" />
+                            android:text="@string/already_register"
+                            android:textColor="@color/black" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 

@@ -1,31 +1,43 @@
 package com.ivitesse.epicure.activities;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.adapter.RatingReviewsAdapter;
 import com.ivitesse.epicure.dialogs.Rating_Review_Fragment;
+import com.ivitesse.epicure.helper.ConfigUrl;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.ivitesse.epicure.helper.MyApplication;
 import com.ivitesse.epicure.model.EpiModel;
+import com.ivitesse.epicure.volleydata.VolleySingleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Review_Rating extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
     private ArrayList<EpiModel> epiModels;
-    RecyclerView recyclerview;
+    private RecyclerView recyclerview;
     private Toolbar toolbar;
-    private ProgressDialog pDialog;
     ExtendedFloatingActionButton fab;
+    AppCompatImageView appCompatImageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,81 +58,38 @@ public class Review_Rating extends BaseActivity implements ConnectivityChangeRec
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Rating and Reviews");
         recyclerview = findViewById(R.id.recyclerview);
+        appCompatImageView = findViewById(R.id.appCompatImageView);
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> Rating_Review_Fragment.display(getSupportFragmentManager()));
-        epiModels = new ArrayList<>();
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        setupRecycler();
 
-
-        /*    pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getTermsAndRules,
+        showLoading();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getRatingAndReviews,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
                         if (!obj.getBoolean("error")) {
-                            epiModels = new ArrayList<>();
-                            JSONArray data = obj.getJSONArray("data");
+                            if (obj.getString("message").equals("Record not found.")) {
+                                appCompatImageView.setVisibility(View.VISIBLE);
+                                recyclerview.setVisibility(View.GONE);
+                            } else {
+                                epiModels = new ArrayList<>();
+                                JSONArray data = obj.getJSONArray("data");
+                                for (int i = 0; i < data.length(); i++) {
+                                    EpiModel epiModel = new EpiModel();
+                                    JSONObject dataobj = data.getJSONObject(i);
+                                    epiModel.setName(dataobj.getString("name"));
+                                    epiModel.setReview(dataobj.getString("review"));
+                                    epiModel.setProfile_pic(dataobj.getString("profile_pic"));
+                                    epiModel.setRating(dataobj.getString("rating"));
+                                    epiModels.add(epiModel);
+                                }
+                                setupRecycler();
 
-                            for (int i = 0; i < data.length(); i++) {
-
-                                EpiModel epiModel = new EpiModel();
-                                JSONObject dataobj = data.getJSONObject(i);
-                                epiModel.setName(dataobj.getString("name"));
-                                epiModel.setDescription(dataobj.getString("description"));
-
-                                epiModels.add(epiModel);
                             }
-                            setupRecycler();
-
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -128,7 +97,7 @@ public class Review_Rating extends BaseActivity implements ConnectivityChangeRec
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
@@ -144,7 +113,7 @@ public class Review_Rating extends BaseActivity implements ConnectivityChangeRec
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-    }*/
+
     }
 
     @Override
@@ -164,21 +133,14 @@ public class Review_Rating extends BaseActivity implements ConnectivityChangeRec
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
+        hideLoading();
     }
 
 
     private void setupRecycler() {
         recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
                     fab.hide();

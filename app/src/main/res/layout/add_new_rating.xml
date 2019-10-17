@@ -46,6 +46,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
+                        android:inputType="text"
                         android:textStyle="bold" />
 
                     <requestFocus />
@@ -67,6 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
+                        android:inputType="text"
                         android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -79,8 +81,8 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:isIndicator="false"
                     android:numStars="5"
-                    android:saveEnabled="true"
                     android:rating="3.5"
+                    android:saveEnabled="true"
                     android:stepSize="0.5" />
 
                 <com.google.android.material.button.MaterialButton

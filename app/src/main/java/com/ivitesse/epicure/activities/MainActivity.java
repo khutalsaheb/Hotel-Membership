@@ -35,7 +35,8 @@ import java.util.Objects;
 public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener, ConnectivityChangeReceiver.ConnectivityReceiverListener {
 
     private CardView profile;
-    String userId, Name;
+    String userId;
+    private String Name;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView about_us, fcoupons, pastcoupons, ratings, transaction_history_card, past_stays_card, card_future_booking;
     private String past_coupons;
@@ -127,7 +128,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         pastcoupons.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Past_Coupons.class)));
         ratings.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Review_Rating.class)));
         transaction_history_card.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Transaction_History.class)));
-        past_stays_card.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Transaction_History.class)));
+        past_stays_card.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Past_Stays.class)));
         card_future_booking.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Futures_Booking.class)));
     }
 
@@ -137,9 +138,10 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     }
 
     private void GetDashboard() {
+        showLoading();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.dashboard,
                 response -> {
-
+                    hideLoading();
                     try {
                         JSONObject obj = new JSONObject(response);
                         if (!obj.getBoolean("error")) {
@@ -164,6 +166,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 // stopping swipe refresh
                             swipeRefreshLayout.setRefreshing(false);
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            hideLoading();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -171,6 +174,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                 },
                 error -> {
 // stopping swipe refresh
+                    hideLoading();
                     swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }

@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class Future_Coupons extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
     ArrayList<EpiModel> epiModels;
-    RecyclerView recyclerview;
+    private RecyclerView recyclerview;
     private Toolbar toolbar;
     private ProgressDialog pDialog;
     AppCompatTextView count;
@@ -51,12 +51,28 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
         count = findViewById(R.id.count);
 
         epiModels = new ArrayList<>();
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", "this is new offer for our customers", "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
+        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
+                "hotel crown pune", "12 nov,2019"));
         // setupRecycler();
         onSetRecyclerView();
 

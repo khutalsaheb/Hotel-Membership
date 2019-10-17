@@ -32,7 +32,7 @@ public class About_Info extends BaseActivity implements ConnectivityChangeReceiv
     private ArrayList<EpiModel> epiModels;
     private RecyclerView recyclerview;
     private Toolbar toolbar;
-    private ProgressDialog pDialog;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,13 +53,10 @@ public class About_Info extends BaseActivity implements ConnectivityChangeReceiv
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Information");
         recyclerview = findViewById(R.id.recyclerview);
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
+      showLoading();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getTermsAndRules,
                 response -> {
-                    hidePDialog();
+                  hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
@@ -79,7 +76,7 @@ public class About_Info extends BaseActivity implements ConnectivityChangeReceiv
                             setupRecycler();
 
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -87,7 +84,7 @@ public class About_Info extends BaseActivity implements ConnectivityChangeReceiv
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
@@ -122,15 +119,9 @@ public class About_Info extends BaseActivity implements ConnectivityChangeReceiv
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
+        hideLoading();
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
 
     private void setupRecycler() {
 

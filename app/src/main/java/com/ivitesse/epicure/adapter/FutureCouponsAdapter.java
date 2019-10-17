@@ -1,16 +1,18 @@
 package com.ivitesse.epicure.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.ivitesse.epicure.R;
+import com.ivitesse.epicure.activities.Offer_Details_coupons;
 import com.ivitesse.epicure.model.EpiModel;
 
 import java.util.List;
@@ -45,6 +47,7 @@ public class FutureCouponsAdapter extends RecyclerView.Adapter<FutureCouponsAdap
         holder.title_desc.setText(offersModel.getDescription());
         holder.offer_valid.setText(offersModel.getOffer_valid());
         holder.offer_from.setText(offersModel.getOffer_from());
+        holder.appCompatButton.setOnClickListener(v -> context.startActivity(new Intent(context, Offer_Details_coupons.class)));
 
 
     }
@@ -56,7 +59,7 @@ public class FutureCouponsAdapter extends RecyclerView.Adapter<FutureCouponsAdap
 
     class ViewHolder extends RecyclerView.ViewHolder {
         final AppCompatTextView title, title_desc, offer_from, offer_valid;
-        final AppCompatButton appCompatButton;
+        final MaterialButton appCompatButton;
 
         ViewHolder(View itemview) {
             super(itemview);
