@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_2sdp"
+    app:cardCornerRadius="@dimen/_8sdp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_placename"
+        app:layout_constraintTop_toBottomOf="@+id/txt_placename">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/location_image"
+            android:layout_width="@dimen/_50"
+            android:layout_height="@dimen/_50"
+            android:layout_margin="@dimen/_8sdp"
+            android:background="@drawable/hotel_image"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_placeprice"
+            android:layout_width="@dimen/_50"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_button_drawable"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_placedeals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="start|center"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="italic|bold"
+            app:layout_constraintEnd_toStartOf="@+id/txt_placeprice"
+            app:layout_constraintStart_toEndOf="@+id/location_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_placename"
+            style="@style/TextDash"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="start"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/txt_placeprice"
+            app:layout_constraintStart_toEndOf="@+id/location_image"
+            app:layout_constraintTop_toBottomOf="@+id/txt_placedeals" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_placelocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="center|start"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/txt_placeprice"
+            app:layout_constraintStart_toEndOf="@+id/location_image"
+            app:layout_constraintTop_toBottomOf="@+id/txt_placename" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_days"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="6sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_placeprice"
+            app:layout_constraintStart_toEndOf="@+id/location_image"
+            app:layout_constraintTop_toBottomOf="@+id/txt_placelocation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

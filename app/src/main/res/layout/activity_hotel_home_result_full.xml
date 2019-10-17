@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/toolbar_hide" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:cardCornerRadius="@dimen/_8sdp">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_50">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/location_image"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_200sdp"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/likebutton"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:background="@drawable/ic_favorite"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:gravity="center|start"
+                        android:text="2 Rooms Available"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/location_image"
+                        app:layout_constraintTop_toTopOf="@+id/location_image"
+                        app:textAllCaps="true" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/likebuttonok"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:background="@drawable/ic_favorite_heart"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_placeprice"
+                        android:layout_width="@dimen/_100"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:background="@drawable/background"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/location_image"
+                        app:layout_constraintStart_toStartOf="@+id/location_image" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/hotelname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/location_image" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_offer_deal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:ellipsize="marquee"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:singleLine="true"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hotelname" />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/rating"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="3.3"
+                        android:stepSize="0.1"
+                        app:layout_constraintBottom_toBottomOf="@+id/location_image"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/amenities_textview"
+                        style="@style/TextDash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="@string/amenities"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_offer_deal" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/amenities_textview"
+                        tools:targetApi="lollipop" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/location_textview"
+                        style="@style/TextDash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="@string/enter_address"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/hotellocation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/location_textview" />
+
+                    <!--ADD GOOGLE MAP HERE-->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/location_image_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:background="@drawable/map_temp"
+                        app:layout_constraintTop_toBottomOf="@+id/hotellocation" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/policies_textview"
+                        style="@style/TextDash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:text="@string/policies"
+                        android:textColor="@android:color/holo_red_light"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/location_image_map" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/hotelpolicies"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/policies_textview" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hotelpolicies">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@drawable/rounded_button_drawable"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/reviews"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:textStyle="bold"
+                            android:typeface="monospace"
+                            app:textAllCaps="true" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:background="@drawable/rounded_button_drawable"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="center"
+                            android:padding="@dimen/_5sdp"
+                            android:text="@string/photos"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:textStyle="bold"
+                            android:typeface="monospace"
+                            app:textAllCaps="true" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <View
+                        android:id="@+id/anchorview"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_50"
+                        android:layout_marginTop="@dimen/_50"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/my_sticky_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/rounded_button_drawable"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/book_now"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
