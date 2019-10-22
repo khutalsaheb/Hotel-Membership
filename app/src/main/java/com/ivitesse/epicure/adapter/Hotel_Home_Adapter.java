@@ -70,11 +70,11 @@ public class Hotel_Home_Adapter extends RecyclerView.Adapter<Hotel_Home_Adapter.
     }
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
-        final private AppCompatRatingBar rating;
-        final private AppCompatTextView hotelname, txt_hotelreview, txt_offer_deal, txt_placeprice;
-        final private AppCompatImageView location_image;
-        final private CardView card_action;
-        final private AppCompatImageButton likebutton;
+        final AppCompatRatingBar rating;
+        final AppCompatTextView hotelname, txt_hotelreview, txt_offer_deal, txt_placeprice;
+        final AppCompatImageView location_image;
+        final CardView card_action;
+        final AppCompatImageButton likebutton;
 
         NewsViewHolder(View itemView) {
             super(itemView);

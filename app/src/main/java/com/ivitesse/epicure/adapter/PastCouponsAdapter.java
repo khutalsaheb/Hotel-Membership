@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.model.EpiModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +43,11 @@ public class PastCouponsAdapter extends RecyclerView.Adapter<PastCouponsAdapter.
                                  int position) {
         EpiModel offersModel = offersList.get(position);
         holder.title.setText(offersModel.getTitle());
-
+        holder.status.setText(offersModel.getStatus());
+        Picasso.get()
+                .load(offersModel.getProfile_pic())
+                .fit().centerCrop()
+                .into(holder.networkImageView);
 
     }
 
@@ -51,11 +57,14 @@ public class PastCouponsAdapter extends RecyclerView.Adapter<PastCouponsAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        final AppCompatTextView title;
+        final AppCompatTextView title, status;
+        final AppCompatImageView networkImageView;
 
         ViewHolder(View itemview) {
             super(itemview);
             title = itemview.findViewById(R.id.title);
+            status = itemview.findViewById(R.id.status);
+            networkImageView = itemview.findViewById(R.id.networkImageView);
         }
 
 

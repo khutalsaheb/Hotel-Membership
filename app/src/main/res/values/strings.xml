@@ -174,5 +174,7 @@
     <string name="close">Close</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-
+    <string name="saved_amount">saved amount</string>
+    <string name="used_amount">Used amount</string>
+    <string name="Rs">\u20B9 . </string>
 </resources>

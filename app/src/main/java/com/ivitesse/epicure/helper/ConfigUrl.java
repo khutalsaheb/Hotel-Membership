@@ -11,7 +11,12 @@ public class ConfigUrl {
     public final static String getTermsAndRules = BaseUrl + "getTermsAndRules";
     public final static String getRatingAndReviews = BaseUrl + "getRatingAndReviews";
     public final static String addRatingAndReview = BaseUrl + "addRatingAndReview";
-    public final static String getCabFare = BaseUrl + "getCabFare";
+    public final static String getPastCoupons = BaseUrl + "getPastCoupons";
+    public final static String getFutureCoupons = BaseUrl + "getFutureCoupons";
+    public final static String getPastStays = BaseUrl + "getPastStays";
+    public final static String getSavings = BaseUrl + "getSavings";
+    //  public final static String getPastStays = BaseUrl + "getPastStays";
+    //  public final static String getPastStays = BaseUrl + "getPastStays";
 
 }
 /*                            ldpi     mdpi     hdpi    xhdpi    xxhdpi      xxxhdpi

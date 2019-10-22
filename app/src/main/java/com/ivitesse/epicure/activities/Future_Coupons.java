@@ -1,8 +1,9 @@
 package com.ivitesse.epicure.activities;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,28 +13,43 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.adapter.FutureCouponsAdapter;
 import com.ivitesse.epicure.helper.CenterZoomLayoutManager;
+import com.ivitesse.epicure.helper.ConfigUrl;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.ivitesse.epicure.helper.MyApplication;
+import com.ivitesse.epicure.helper.SessionManager;
 import com.ivitesse.epicure.model.EpiModel;
+import com.ivitesse.epicure.volleydata.VolleySingleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-public class Future_Coupons extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
+public class Future_Coupons extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener, FutureCouponsAdapter.DetailsListener {
     ArrayList<EpiModel> epiModels;
     private RecyclerView recyclerview;
     private Toolbar toolbar;
-    private ProgressDialog pDialog;
     AppCompatTextView count;
+    SessionManager sessionManager;
+    String userId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Checkit();
         setContentView(R.layout.recyclerviewcoupons);
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> users = sessionManager.getUser();
+        userId = users.get(SessionManager.KEY_USERID);
         init();
 
     }
@@ -50,39 +66,11 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
         recyclerview = findViewById(R.id.recyclerview);
         count = findViewById(R.id.count);
 
-        epiModels = new ArrayList<>();
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        epiModels.add(new EpiModel("Get 1 Buy 2 dish in Dinner", getString(R.string.large_text),
-                "hotel crown pune", "12 nov,2019"));
-        // setupRecycler();
-        onSetRecyclerView();
 
-        /*    pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getTermsAndRules,
+        showLoading();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.getFutureCoupons,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
@@ -91,18 +79,21 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
                             JSONArray data = obj.getJSONArray("data");
 
                             for (int i = 0; i < data.length(); i++) {
-
                                 EpiModel epiModel = new EpiModel();
                                 JSONObject dataobj = data.getJSONObject(i);
-                                epiModel.setName(dataobj.getString("name"));
+                                epiModel.setTitle(dataobj.getString("discountCouponName"));
                                 epiModel.setDescription(dataobj.getString("description"));
+                                epiModel.setOffer_from(dataobj.getString("hotelName"));
+                                epiModel.setProfile_pic(dataobj.getString("image"));
+                                epiModel.setOffer_valid(dataobj.getString("expiry_date"));
+                                epiModel.setReview(dataobj.getString("termsandconditions"));
 
                                 epiModels.add(epiModel);
                             }
-                            setupRecycler();
+                            onSetRecyclerView();
 
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -110,10 +101,18 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("userId", userId);
+
+                return params;
+            }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
@@ -126,7 +125,7 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-    }*/
+
     }
 
     @Override
@@ -146,21 +145,15 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
+        hideLoading();
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
 
     private void onSetRecyclerView() {
         CenterZoomLayoutManager layoutManager =
                 new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerview.setLayoutManager(layoutManager);
-        FutureCouponsAdapter recyclerViewAdapter = new FutureCouponsAdapter(epiModels, this);
+        FutureCouponsAdapter recyclerViewAdapter = new FutureCouponsAdapter(epiModels, this, this);
         recyclerview.setAdapter(recyclerViewAdapter);
         // Scroll to the position we want to snap to
         layoutManager.scrollToPosition(epiModels.size() / 2);
@@ -189,5 +182,20 @@ public class Future_Coupons extends BaseActivity implements ConnectivityChangeRe
         });
     }
 
-
+    @Override
+    public void DealsDetailsListener(@Nullable EpiModel details) {
+//Create the bundle
+        Intent i = new Intent(getApplicationContext(), Offer_Details_coupons.class);
+        Bundle bundle = new Bundle();
+//Add your data from getFactualResults method to bundle
+        bundle.putString("discountCouponName", details.getTitle());
+        bundle.putString("expiry_date", details.getOffer_valid());
+        bundle.putString("image", details.getProfile_pic());
+        bundle.putString("hotelName", details.getOffer_from());
+        bundle.putString("description", details.getDescription());
+        bundle.putString("termsandconditions", details.getReview());
+//Add the bundle to the intent String discountCouponName,expiry_date,image,hotelName,description,termsandconditions;
+        i.putExtras(bundle);
+        startActivity(i);
+    }
 }

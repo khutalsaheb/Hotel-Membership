@@ -4,7 +4,7 @@
     android:id="@+id/cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_2sdp"
+    android:layout_margin="@dimen/_5sdp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
@@ -13,67 +13,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/costraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
         app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/carddd"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            app:cardBackgroundColor="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <!--  <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/dt"
+              android:layout_width="@dimen/_100"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:layout_margin="@dimen/_5sdp"
+              android:fontFamily="@font/montserrat_bold"
+              android:gravity="center"
+              android:padding="@dimen/_5sdp"
+              android:text="12 May 2019"
+              android:textAllCaps="true"
+              android:textColor="@color/black"
+              android:textSize="15sp"
+              android:textStyle="bold"
+              app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />-->
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_5sdp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/_5sdp">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/dt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center|start"
-                    android:text="12 May"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/yeass"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:gravity="center"
-                    android:text="2019"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
+            style="@style/TextDash"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="@string/app_name"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/carddd"
-            app:layout_constraintTop_toTopOf="@+id/carddd" />
+            android:gravity="start|center"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/dt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -81,13 +56,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:text="@string/app_name"
-            android:textColor="@color/colorAccent"
+            android:gravity="start"
+            android:text="@string/transaction_history"
+            android:textColor="@color/black"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/carddd"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -97,11 +71,9 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="3"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/carddd"
-            app:layout_constraintTop_toBottomOf="@+id/title_desc"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_desc">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/discount_value"
@@ -122,7 +94,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="20000"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -130,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/circles"
+                android:background="@color/colorPrimary"
                 android:fontFamily="@font/montserrat_regular"
                 android:gravity="center"
                 android:padding="@dimen/_2sdp"
@@ -140,23 +112,21 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <!--  <androidx.appcompat.widget.AppCompatTextView
-              android:id="@+id/date_text"
-              style="@style/TextDash"
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:layout_marginEnd="16dp"
-              android:layout_marginRight="16dp"
-              android:layout_weight="0.5"
-              android:gravity="center|end"
-              android:text="10-10-2019:05:05:20"
-              android:textColor="@color/colorAccent"
-              android:textSize="@dimen/_10ssp"
-              app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
-              app:layout_constraintVertical_bias="0.062" />
-  -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dt"
+            style="@style/TextDash"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="center|end"
+            android:padding="@dimen/_5sdp"
+            android:text="12 May 2019"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

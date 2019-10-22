@@ -4,7 +4,7 @@
     tools:context="com.ivitesse.epicure.activities.MainActivity">
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/barcode"
+        android:icon="@drawable/iconscreditcard"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="always" />

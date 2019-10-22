@@ -13,16 +13,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_1dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/_2sdp">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/background"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="1"

@@ -13,6 +13,16 @@ public class EpiModel {
     private String date_text;
     private String rating;
 
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @NonNull
     public String getRating() {
         return rating;

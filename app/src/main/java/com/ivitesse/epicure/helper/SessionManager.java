@@ -23,13 +23,13 @@ public class SessionManager {
     public static final String KEY_ADDRESS = "address";
     private static final String KEY_MEMTYPE = "membership_type";
     public static final String KEY_UID = "uuid";
-    /* public static final String KEY_PASTCOUPON = "past_coupons";
-     public static final String KEY_PASTSTAY = "past_stays";
-     public static final String KEY_FUTUREBOOKINGS = "future_bookings";
-     public static final String KEY_FUTURECOUPONS = "future_coupons";
-     public static final String KEY_PASTRR = "past_ratings_and_reviews";
-     public static final String KEY_TRANSACTION = "transaction_history";
- */
+    public static final String KEY_PACKAGENAME = "packageName";
+    public static final String KEY_PACKAGEVALIDITY = "packageValidity";
+    public static final String KEY_SORT = "sort";
+    /*   public static final String KEY_FUTURECOUPONS = "future_coupons";
+      public static final String KEY_PASTRR = "past_ratings_and_reviews";
+      public static final String KEY_TRANSACTION = "transaction_history";
+  */
     //@NonNull String userId,@NonNull String email,@NonNull String name,@NonNull String mobile,@NonNull String profile_pic,@NonNull String dob,@NonNull String anniversary_date,@NonNull String
 // address,@NonNull String member_id,@NonNull String membership_type,@NonNull String past_coupons,@NonNull String future_bookings,@NonNull String future_coupons,@NonNull String past_ratings_and_reviews,@NonNull String transaction_history,@NonNull String past_stays
     private static final String IS_LOGIN = "IsLoggedIn";
@@ -64,7 +64,7 @@ public class SessionManager {
     public void createLoginSession(@NonNull String userId, @NonNull String email,
                                    @NonNull String name, @NonNull String mobile, @NonNull String profile_pic,
                                    @NonNull String dob, @NonNull String anniversary_date,
-                                   @NonNull String address, @NonNull String member_id, @NonNull String membership_type
+                                   @NonNull String address, @NonNull String member_id, @NonNull String membership_type, @NonNull String membership_package, @NonNull String membership_validity
 
     ) {
         editor.putString(KEY_UID, member_id);
@@ -77,6 +77,8 @@ public class SessionManager {
         editor.putString(KEY_ANIDATE, anniversary_date);
         editor.putString(KEY_ADDRESS, address);
         editor.putString(KEY_MEMTYPE, membership_type);
+        editor.putString(KEY_PACKAGENAME, membership_package);
+        editor.putString(KEY_PACKAGEVALIDITY, membership_validity);
 
         editor.apply();
     }
@@ -86,7 +88,16 @@ public class SessionManager {
         editor.apply();
     }
 
+    public void sorts(@NonNull String jsonString) {
+        editor.putString(KEY_SORT, jsonString);
+        editor.apply();
+    }
 
+    public HashMap<String, String> setsorts() {
+        HashMap<String, String> user = new HashMap<>();
+        user.put(KEY_SORT, pref.getString(KEY_SORT, null));
+        return user;
+    }
     @NonNull
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<>();
@@ -108,6 +119,8 @@ public class SessionManager {
         user.put(KEY_ANIDATE, pref.getString(KEY_ANIDATE, null));
         user.put(KEY_ADDRESS, pref.getString(KEY_ADDRESS, null));
         user.put(KEY_MEMTYPE, pref.getString(KEY_MEMTYPE, null));
+        user.put(KEY_PACKAGENAME, pref.getString(KEY_PACKAGENAME, null));
+        user.put(KEY_PACKAGEVALIDITY, pref.getString(KEY_PACKAGEVALIDITY, null));
         return user;
     }
 

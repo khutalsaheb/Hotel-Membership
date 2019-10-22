@@ -1,33 +1,47 @@
 package com.ivitesse.epicure.activities;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.adapter.PastCouponsAdapter;
+import com.ivitesse.epicure.helper.ConfigUrl;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.ivitesse.epicure.helper.MyApplication;
+import com.ivitesse.epicure.helper.SessionManager;
 import com.ivitesse.epicure.model.EpiModel;
+import com.ivitesse.epicure.volleydata.VolleySingleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Past_Coupons extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
     private ArrayList<EpiModel> epiModels;
     private RecyclerView recyclerview;
     private Toolbar toolbar;
-    private ProgressDialog pDialog;
-
+    SessionManager sessionManager;
+    String userId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Checkit();
         setContentView(R.layout.recyclerview);
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> users = sessionManager.getUser();
+        userId = users.get(SessionManager.KEY_USERID);
         init();
 
     }
@@ -42,24 +56,11 @@ public class Past_Coupons extends BaseActivity implements ConnectivityChangeRece
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Past Coupons");
         recyclerview = findViewById(R.id.recyclerview);
-        epiModels = new ArrayList<>();
-        epiModels.add(new EpiModel("REDEEMED 11-11-2019"));
-        epiModels.add(new EpiModel("Expired"));
-        epiModels.add(new EpiModel("REDEEMED 20-11-2019"));
-        epiModels.add(new EpiModel("REDEEMED 20-11-2019"));
-        epiModels.add(new EpiModel("REDEEMED 20-11-2019"));
-        epiModels.add(new EpiModel("REDEEMED 20-11-2019"));
-        epiModels.add(new EpiModel("REDEEMED 20-11-2019"));
-        setupRecycler();
 
-
-        /*    pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getTermsAndRules,
+        showLoading();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.getPastCoupons,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
@@ -68,18 +69,18 @@ public class Past_Coupons extends BaseActivity implements ConnectivityChangeRece
                             JSONArray data = obj.getJSONArray("data");
 
                             for (int i = 0; i < data.length(); i++) {
-
                                 EpiModel epiModel = new EpiModel();
                                 JSONObject dataobj = data.getJSONObject(i);
-                                epiModel.setName(dataobj.getString("name"));
-                                epiModel.setDescription(dataobj.getString("description"));
+                                epiModel.setTitle(dataobj.getString("redeem_date"));
+                                epiModel.setProfile_pic(dataobj.getString("image"));
+                                epiModel.setStatus(dataobj.getString("status"));
 
                                 epiModels.add(epiModel);
                             }
                             setupRecycler();
 
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -87,10 +88,18 @@ public class Past_Coupons extends BaseActivity implements ConnectivityChangeRece
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("userId", userId);
+
+                return params;
+            }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
@@ -103,7 +112,7 @@ public class Past_Coupons extends BaseActivity implements ConnectivityChangeRece
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-    }*/
+
     }
 
     @Override
@@ -123,14 +132,7 @@ public class Past_Coupons extends BaseActivity implements ConnectivityChangeRece
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
+        hideLoading();
     }
 
 

@@ -100,9 +100,10 @@ public class Login_Activity extends BaseActivity implements ConnectivityChangeRe
                                 String address = data.getString("address");
                                 String membership_type = data.getString("packageId");
                               //  String membership_type = data.getString("membership_type");
-
+                                String packageName = data.getString("packageName");
+                                String packageValidity = data.getString("packageValidity");
                                 sessionManager.createLoginSession(userId, email, name, mobile, profile_pic, dob, anniversary_date,
-                                        address, member_id, membership_type);
+                                        address, member_id, membership_type, packageName, packageValidity);
 
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();

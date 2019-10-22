@@ -1,32 +1,49 @@
 package com.ivitesse.epicure.activities;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.adapter.Past_Stays_Adapter;
+import com.ivitesse.epicure.helper.ConfigUrl;
 import com.ivitesse.epicure.helper.ConnectivityChangeReceiver;
 import com.ivitesse.epicure.helper.MyApplication;
+import com.ivitesse.epicure.helper.SessionManager;
 import com.ivitesse.epicure.model.EpiModel;
+import com.ivitesse.epicure.volleydata.VolleySingleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiver.ConnectivityReceiverListener {
-    private RecyclerView recyclerview;
+
     private ArrayList<EpiModel> epiModels;
+    SessionManager sessionManager;
     private Toolbar toolbar;
-    private ProgressDialog pDialog;
+    String userId;
+    private RecyclerView recyclerview;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Checkit();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> users = sessionManager.getUser();
+        userId = users.get(SessionManager.KEY_USERID);
+
         setContentView(R.layout.recyclerview);
         init();
 
@@ -42,24 +59,11 @@ public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiv
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Past Stays");
         recyclerview = findViewById(R.id.recyclerview);
-        epiModels = new ArrayList<>();
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "5 Guest ", "Save Rs. 500", "Pune Banglore highway 411000"));
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "Party", "Save Rs. 500", "Pune Banglore highway 411000"));
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "Min 5 Guest ", "Save Rs. 500", "Pune Banglore highway 411000"));
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "Min 5 peoples ", "Save Rs. 500", "Pune Banglore highway 411000"));
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "Min 5 Guest ", "Save Rs. 500", "Pune Banglore highway 411000"));
-        epiModels.add(new EpiModel("11 May", "2019", "Hotel Taj", "33% off on 5 people ", "Rs. 2000", "Min 5 peoples ", "Save Rs. 500", "Pune Banglore highway 411000"));
 
-        setupRecycler();
-
-
-        /*    pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, ConfigUrl.getTermsAndRules,
+        showLoading();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ConfigUrl.getPastStays,
                 response -> {
-                    hidePDialog();
+                    hideLoading();
 
                     try {
                         JSONObject obj = new JSONObject(response);
@@ -68,18 +72,19 @@ public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiv
                             JSONArray data = obj.getJSONArray("data");
 
                             for (int i = 0; i < data.length(); i++) {
-
                                 EpiModel epiModel = new EpiModel();
                                 JSONObject dataobj = data.getJSONObject(i);
-                                epiModel.setName(dataobj.getString("name"));
-                                epiModel.setDescription(dataobj.getString("description"));
+                                epiModel.setTitle(dataobj.getString("name"));
+                                epiModel.setProfile_pic(dataobj.getString("hotel_pic"));
+                                epiModel.setDt(dataobj.getString("stayDate"));
+                                epiModel.setAddress(dataobj.getString("address"));
 
                                 epiModels.add(epiModel);
                             }
                             setupRecycler();
 
                         } else {
-                            hidePDialog();
+                            hideLoading();
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -87,10 +92,18 @@ public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiv
                     }
                 },
                 error -> {
-                    hidePDialog();
+                    hideLoading();
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("userId", userId);
+
+                return params;
+            }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
@@ -103,7 +116,7 @@ public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiv
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-    }*/
+
     }
 
     @Override
@@ -123,14 +136,7 @@ public class Past_Stays extends BaseActivity implements ConnectivityChangeReceiv
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
+        hideLoading();
     }
 
 

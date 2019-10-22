@@ -1,5 +1,6 @@
 package com.ivitesse.epicure.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull TransactionHistoryAdapter.ViewHolder holder,
                                  int position) {
@@ -45,10 +47,9 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
         holder.title.setText(offersModel.getTitle());
         holder.title_desc.setText(offersModel.getTitle_desc());
         holder.dt.setText(offersModel.getDt());
-        holder.yeass.setText(offersModel.getYeass());
-        holder.original_value.setText(offersModel.getOriginal_value());
-        holder.discount_value.setText(offersModel.getDiscount_value());
-        holder.saving.setText(offersModel.getSaving());
+        holder.original_value.setText("\u20B9 " + offersModel.getOriginal_value());
+        holder.discount_value.setText("\u20B9 " + offersModel.getDiscount_value());
+        holder.saving.setText("saved " + "\u20B9 " + offersModel.getSaving());
 
 
     }
@@ -59,13 +60,12 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        final AppCompatTextView dt, yeass, title, title_desc, original_value, discount_value, saving;
+        final AppCompatTextView dt, title, title_desc, original_value, discount_value, saving;
         final CardView cardview;
 
         ViewHolder(View itemview) {
             super(itemview);
             dt = itemview.findViewById(R.id.dt);
-            yeass = itemview.findViewById(R.id.yeass);
             title = itemview.findViewById(R.id.title);
             title_desc = itemview.findViewById(R.id.title_desc);
             original_value = itemview.findViewById(R.id.original_value);

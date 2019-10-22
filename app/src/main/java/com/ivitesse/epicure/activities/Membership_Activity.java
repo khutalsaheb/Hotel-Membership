@@ -2,9 +2,7 @@ package com.ivitesse.epicure.activities;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -22,7 +20,7 @@ import com.ivitesse.epicure.helper.SessionManager;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Membership_Activity extends AppCompatActivity implements View.OnClickListener {
+public class Membership_Activity extends AppCompatActivity {
     private final static int QRcodeWidth = 100;
     private SessionManager sessionManager;
     private AppCompatTextView mem_id;
@@ -38,6 +36,8 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
     private String dob_data;
     private String anniversary_date;
     private String address;
+    private String mem_package;
+    private String mem_validity;
     private Bitmap bitmap;
     private AppCompatImageView imageView;
     private CardView cardviewfull;
@@ -64,6 +64,8 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
         anniversary_date = users.get(SessionManager.KEY_ANIDATE);
         address = users.get(SessionManager.KEY_ADDRESS);
         profile_pic_url = users.get(SessionManager.KEY_PICID);
+        mem_package = users.get(SessionManager.KEY_PACKAGENAME);
+        mem_validity = users.get(SessionManager.KEY_PACKAGEVALIDITY);
 
     }
 
@@ -80,8 +82,8 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
 
         cardview = findViewById(R.id.cardview);
         cardviewfull = findViewById(R.id.cardviewfull);
-        cardview.setOnClickListener(this);
-        cardviewfull.setOnClickListener(this);
+        //  cardview.setOnClickListener(this);
+        //  cardviewfull.setOnClickListener(this);
 
         try {
             bitmap = TextToImageEncode(membership_id);
@@ -97,7 +99,8 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
         mem_valid = findViewById(R.id.mem_valid);
         mem_id.setText(membership_id);
         mem_name.setText(name);
-
+        mem_type.setText(mem_package);
+        mem_valid.setText(mem_validity);
     }
 
     private Bitmap TextToImageEncode(String Value) throws WriterException {
@@ -132,9 +135,9 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
         bitmap.setPixels(pixels, 0, 100, 0, 0, bitMatrixWidth, bitMatrixHeight);
         return bitmap;
     }
+}
 
-
-    @Override
+  /*  @Override
     public void onClick(@NonNull View v) {
         switch (v.getId()) {
             case R.id.cardviewfull:
@@ -148,5 +151,5 @@ public class Membership_Activity extends AppCompatActivity implements View.OnCli
 
         }
     }
-}
+}*/
 

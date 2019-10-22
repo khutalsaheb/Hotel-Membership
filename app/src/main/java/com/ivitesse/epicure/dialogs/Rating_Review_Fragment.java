@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -84,8 +83,14 @@ public class Rating_Review_Fragment extends BaseFragments {
         button_submit = view.findViewById(R.id.button_submit);
         button_submit.setOnClickListener(v -> SubmitReview());
 
-        Rating="3.5";
-        rating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> Rating = (String.valueOf(rating)));
+        Rating = "3.5";
+        rating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            if (rating < 0.5f) {
+                ratingBar.setRating(0.5f);
+            } else {
+                Rating = (String.valueOf(rating));
+            }
+        });
 
         return view;
     }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ivitesse.epicure.R;
 import com.ivitesse.epicure.model.EpiModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,7 +43,9 @@ public class Past_Stays_Adapter extends RecyclerView.Adapter<Past_Stays_Adapter.
                                  int position) {
         EpiModel offersModel = offersList.get(position);
         holder.title.setText(offersModel.getTitle());
+        holder.date_text.setText(offersModel.getDt());
         holder.title_address.setText(offersModel.getAddress());
+        Picasso.get().load(offersModel.getProfile_pic()).fit().centerCrop().into(holder.hotel_image);
 
     }
 
